@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+var exec = require('child_process').exec;
 
 const fileUpload = require('express-fileupload')
 app.use(fileUpload())
@@ -15,7 +16,7 @@ app.post('/convert/json', (req, res) => {
 
     // FILE SAVED AS 'uploaded_files/NAME.lpo'
 
-
+    const output = exec('./decoder.sh ' + name + ' converted', { encoding: 'utf-8' });  // the default is 'buffer'
     let data = {} //PUT THE JSON DATA IN HERE
     res.send(data);
 });
@@ -25,7 +26,7 @@ app.post('/convert/lpo', (req, res) => {
 
     // SAVE THE DATA TO 'uploaded_files/NAME.lpo'
 
-    res.download('uploaded_files/' + name + '.lpo');
+    res.download('lpo_files/' + name + '.lpo');
 });
 
 app.listen(PORT, () => {
