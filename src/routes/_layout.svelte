@@ -1,24 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
-	import { writable } from 'svelte/store';
 	import Nav from '../components/Nav.svelte';
-	import Popup from '../components/Popup.svelte';
-
-	import PopupManager, {popups, createPopup } from '../components/PopupManager.svelte';
-
-	let popupsl = false;
-
-	function handlePopupClose(event){
-		var id = event.detail.id;
-		$popups = $popups.filter(popup => popup.attributes.id !== id);
-	}
-
-	// createPopup("Init", "<p style='color:red;''>This is a test popup</p>");
-	// // $popups = $popups.filter(popup => popup.attributes.title !== "Init");
-	// createPopup("Testing", "This is another test popup");
-	// createPopup("Testing", "This is another test popup");
-	// createPopup("Testing", "This is another test popup");
-	// createPopup("Testing", "This is another test popup");
 </script>
 
 <style>
@@ -46,15 +27,7 @@
 
 	
 </style>
-<PopupManager on:loadPopups={handlePopupLoad} />
 <div id="global">
-	{#if popupsl}
-		{#each $popups as popup}
-			<Popup on:close={handlePopupClose} attributes={popup.attributes}/>
-		{/each}
-	{/if}
-		
-
 	<body>
 		<Nav/>
 

@@ -1,11 +1,7 @@
 <script>
 	import successkid from 'images/successkid.jpg';
 	import { onMount } from 'svelte';
-	import { createPopup, popups } from '../components/PopupManager.svelte';
-	createPopup("Testing", "<p style='color:red;''>This is a tessssssssssssst popup</p>");
-	onMount(() => {
-		
-	});
+	import { createPopup } from '../components/PopupManager.svelte';
 </script>
 
 <style>
@@ -38,7 +34,6 @@
 <main>
 	<div style="display:flex; align-items:center; justify-content:center;">
 	<img src="icons/upload.svg" alt="upload">
-	<button on:click={() => {createPopup("Testing", "<p style='color:red;''>This is a tessssssssssssst popup</p>");}}>Create Popup</button>
 	</div>
 	<p>LuPo Datei hochladen</p>
 	<p class="bottom">BetterLuPo sendet deine Datei zur umwandlung an unsere Server. <br>

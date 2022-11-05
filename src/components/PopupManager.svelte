@@ -1,21 +1,23 @@
-<script>
-</script>
-
 <script context="module">
-    import { writable } from 'svelte/store';
-    import { get } from "svelte/store";
-    export let popups = writable([]);
+    import Popup from './Popup.svelte';
     let idIncrement = 0;
 
     export function createPopup(title, content) {       
-        get(popups).push({
-            attributes:{
-                id: idIncrement++,
-                title: title,
-                content: content
-            }
-        });
-        
-        console.log(get(popups));
+        document.documentElement.appendChild(
+            new Popup({
+                target: document.body,
+                props: {
+                    attributes: {
+                        id: idIncrement++,
+                        title: title,
+                        content: content
+                    }
+                }
+            })
+        );
+    }
+
+    export function closePopup(id) {
+        document.getElementById("popup"+id).replaceChildren();
     }
 </script>

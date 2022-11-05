@@ -1,21 +1,24 @@
 <script>
-import { createEventDispatcher } from 'svelte';
-
-const dispatch = createEventDispatcher();
+import { scale, fade } from 'svelte/transition';
+import { closePopup } from '../components/PopupManager.svelte';
 
 export let attributes = {};
 
+let animated = false;
+
 function close(){
-    dispatch('close', {
-        id: attributes.id
-    });
+    closePopup(attributes.id);
+    animated = false;
 }
+
+animated = true;
+
 </script>
 
-
-<div id="popup">
-    <div class="dimm"></div>
-    <div class="container">
+{#if animated}
+<div  id={"popup"+attributes.id}>
+    <div transition:fade="{{}}" on:click={close} class="dimm"></div>
+    <div in:scale class="container">
         <p on:click={close} on:keydown={close} class="close"><img src="icons/close_gray.svg" alt="X"></p>
         <h1 class="title">{attributes.title}</h1>
         <div class="content">
@@ -23,6 +26,7 @@ function close(){
         </div>
     </div>
 </div>
+{/if}
 
 
 <style>
