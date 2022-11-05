@@ -1,27 +1,16 @@
 <script>
 
+    import questions from 'questions.json';
+
     let currentAnswer = "";
+
     let currentQuestion = 0;
-    // Informationen zur Erstellung von Fragen und Antworten
-    // ['FRAGE', ['ANTWORT 1', 'ANTWORT 2', 'ANTWORT 3'], Mehrere Antworten?, [['FÄCHER', 'FÄCHER'], PUNKTE]],
-    // Frage ist logischerweise immer die Frage
-    // Antworten werden hier in einem Array nach der Reihenfolge angegeben
-    // Mehrere Antworten? ist ein Boolean, der angibt, ob mehrere Antworten möglich sind
-    // FÄCHER sind die Fächer denen die Punkte für die Frage zugeordnet werden sollen
-    let questions =  [
-        ['Was ist 1+1', ['2', '8', '23'], true, [['mathe'], 3]],
-        ['Magst du Mathe?', ['Ja', 'Nein'], false, [['mathe'], 3]],
-        ['Schreibst du gerne Aufsätze?', ['Ja', 'Nein'], false, [['deutsch, sowi, english, musik'], 2]],
-    ]
+    
+
 
     function nextQuestion() {
-        if (currentQuestion < questions.length - 1) {
-            // alert("Deine Antwort wird überprüft");
-            // if(questions[currentQuestion][3] == currentAnswer) {
-            //     alert("Richtig");
-            // } else {
-            //     alert("Falsch");
-            // }
+        if (currentQuestion < questions["bereiche"].length - 1) {
+            
             currentQuestion++;
             currentAnswer = "";
         } else {
@@ -105,9 +94,9 @@
     
     <div class="Question">
         <div class="col-12">
-            <h1>{questions[currentQuestion][0]}</h1>
+            <h1>{questions["bereiche"]["naturwissenschaften"]["questions"][currentQuestion]}</h1>
         </div>
-        <div class="answers">
+        <!-- <div class="answers">
             <form>
                 <ul>
                     {#each questions[currentQuestion][1] as answer}
@@ -130,7 +119,7 @@
             {:else}
                 <p>Du musst min. 1 Antwort ausgewählt haben!</p>
             {/if}   
-        </div>
+        </div> -->
     </div>
     <img on:click={() => nextQuestion()} class="arrow right" src="icons/arrow_forward.svg" alt="icon für questions" draggable="false">
 

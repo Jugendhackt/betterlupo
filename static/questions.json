@@ -1,0 +1,452 @@
+{
+    "faecher": {
+        "deutsch": {
+            "questions": [
+                {
+                    "question": "Analysierst du gerne Texte?",
+                    "answers": [false, "Ja.", "Nein."]
+                },
+                {
+                    "question": "Liest du gerne?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Schreibst du gerne?",
+                    "answer": [false, "Ja.", "Nein."]
+                }
+            ]
+        },
+        "englisch": {
+            "questions": [
+                {
+                    "question": "Kannst du gut Vokabeln lernen?",
+                    "answers": [false, "Ja.", "Nein."]
+                },
+                {
+                    "question": "Bist du an der englischen Sprache interessiert?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie ist deine Aussprache im Englischen?",
+                    "answer": [true, "Native Speaker", "Ich komm damit klar", "Ich weiche auf Deutsch bzw. andere Sprachen aus", "Ich spreche wie Deutsche-Bahn-Mitarbeiter/innen"]
+                },
+                {
+                    "question": "Wie ist dein Wortschatz im Englischen?",
+                    "answer": [true, "Native Speaker", "Mein Urlaub ist gebucht!", "Meine 2. Sprache ist Denglisch", "Ich reise besser nicht in englischsprachige Länder"]
+                }
+            ]
+        },
+        "französisch": {
+            "questions": [
+                {
+                    "question": "Bist du an der französischen Sprache interessiert?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie ist deine Aussprache im Französisch?",
+                    "answer": [true, "Ich bin sehr talentiert in der Aussprache", "Ich komm damit klar", "Die Aussprache liegt mir eher weniger", "Ich komm mit der Aussprache nicht klar"]
+                },
+                {
+                    "question": "Wie gut sind deine Französischkenntnisse?",
+                    "answer": [true, "Très bien", "Bof", "Was heißt 1, 2?", "Je ne parle pas français ... aber bitte red weiter"]
+                }
+            ]
+        },
+        "spanisch": {
+            "questions": [
+                {
+                    "question": "Bist du an der französischen Sprache interessiert?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie ist deine Aussprache im Französisch?",
+                    "answer": [true, "Ich bin sehr talentiert in der Aussprache", "Ich komm damit klar", "Die Aussprache liegt mir eher weniger", "Ich komm mit der Aussprache nicht klar"]
+                },
+                {
+                    "question": "Wie gut sind deine Französischkenntnisse?",
+                    "answer": [true, "Très bien", "Bof", "Was heißt 1, 2?", "Je ne parle pas français ... aber bitte red weiter"]
+                }
+            ]
+        },
+        "italienisch": {
+            "questions": [
+                {
+                    "question": "Bist du an der französischen Sprache interessiert?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie ist deine Aussprache im Französisch?",
+                    "answer": [true, "Ich bin sehr talentiert in der Aussprache", "Ich komm damit klar", "Die Aussprache liegt mir eher weniger", "Ich komm mit der Aussprache nicht klar"]
+                },
+                {
+                    "question": "Wie gut sind deine Französischkenntnisse?",
+                    "answer": [true, "Très bien", "Bof", "Was heißt 1, 2?", "Je ne parle pas français ... aber bitte red weiter"]
+                }
+            ]
+        },
+        "latein": {
+            "questions": [
+                {
+                    "question": "Bist du an der französischen Sprache interessiert?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie ist deine Aussprache im Französisch?",
+                    "answer": [true, "Ich bin sehr talentiert in der Aussprache", "Ich komm damit klar", "Die Aussprache liegt mir eher weniger", "Ich komm mit der Aussprache nicht klar"]
+                },
+                {
+                    "question": "Wie gut sind deine Französischkenntnisse?",
+                    "answer": [true, "Très bien", "Bof", "Was heißt 1, 2?", "Je ne parle pas français ... aber bitte red weiter"]
+                }
+            ]
+        },
+        "mathe": {
+            "questions": [
+                {
+                    "question": "Magst du Zahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie ist dein mathematisches Grundverständnis?",
+                    "answer": [true, "Ich bin sehr talentiert in Mathe", "Ich komm damit klar", "Mathematik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was Formeln, Graphen und Rechnungen angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Formeln... Ist das nicht was zu essen?"]
+                }
+            ]
+        },
+        "physik": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        },
+        "chemie": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        },
+        "biologie": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        },
+        "informatik": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        },
+        "musik": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        },
+        "sport": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        },
+        "kunst": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        },
+        "literatur": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        },
+        "geschichte": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        },
+        "erdkunde": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        },
+        "sozialwissenschaften": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        },
+        "pädagogik": {
+            "questions": [
+                {
+                    "question": "Magst du Kommazahlen?",
+                    "answer": [false, "Ja.", "Nein."]
+                }, 
+                {
+                    "question": "Wie sind deine Kentnisse in Physik?",
+                    "answer": [true, "Ich bin sehr talentiert in Physik", "Ich komm damit klar", "Physik liegt mir eher weniger", "Ich komm damit gar nicht klar"]
+                },
+                {
+                    "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
+                    "answer": [true, "Ich kenne mich mit allem sehr gut aus!", "Ich habe alles was ich brauche und ein bisschen mehr", "Ich interessiere mich nicht dafür", "Es ist halt wie es ist."]
+                }
+            ]
+        }
+    },
+
+    "bereiche": {
+        "naturwissenschaften": {
+            "points": 0,
+            "faecher": ["mathe", "physik", "chemie", "biologie"],
+            "metafaecher": ["erdkunde"],
+            "questions": [
+                {
+                    "question": "Bist du gut im abstrakten, logischen und analytischen Denken?",
+                    "answers": [false, "Ja.", "Nein."],
+                    "points": 1
+                },
+                {
+                    "question": "Hast du Interesse an neuen und innovativen Technologien?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 1
+                }, 
+                {
+                    "question": "Fasziniert dich die Umwelt?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 1
+                },
+                {
+                    "question": "Hast du ein technisches Grundverständnis?",
+                    "answers": [false, "Ja.", "Nein."],
+                    "points": 2
+                },
+                {
+                    "question": "Hinterfragst du wie natürliche Prozesse in deinem Leben funktionieren?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 2
+                }, 
+                {
+                    "question": "Fasziniert dich die Umwelt?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 2
+                }
+            ]
+        },
+        "gesellschaftswissenschaften": {
+            "points": 0,
+            "faecher": ["erdkunde", "geschichte", "sozialwissenschaften", "pädagogik"],
+            "questions": [
+                {
+                    "question": "Interssiert du dich für die Gesellschaft?",
+                    "answers": [false, "Ja.", "Nein."],
+                    "points": 1
+                },
+                {
+                    "question": "Bist du politisch aktiv?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 1
+                }, 
+                {
+                    "question": "Interssiert es dich, wie Menschen zusammenleben?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 1
+                },
+                {
+                    "question": "Interssierst du dich für das Wohlbefinden deiner Mitmenschen?",
+                    "answers": [false, "Ja.", "Nein."],
+                    "points": 2
+                },
+                {
+                    "question": "Bist du ein/e gute/r Zuhörer/in?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 2
+                }, 
+                {
+                    "question": "Bist du ein/e gute/r Redner/in?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 2
+                }
+            ]
+        },
+        "sprachen": {
+            "points": 0,
+            "faecher": ["deutsch", "englisch", "französisch", "spanisch", "italienisch", "latein"],
+            "questions": [
+                {
+                    "question": "Sprichst du gerne andere Sprachen?",
+                    "answers": [false, "Ja.", "Nein."],
+                    "points": 2
+                },
+                {
+                    "question": "Wie kommst du mit Vokabeln klar?",
+                    "answer": [true, "Sehr Gut", "Gut", "Schlecht", "Sehr Schlecht"],
+                    "points": [2, 1, -1, -2]
+                }, 
+                {
+                    "question": "Interessierst du dich für (neue) Kulturen?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 2
+                },
+                {
+                    "question": "Hast du ein gutes Sprachgefühl?",
+                    "answers": [false, "Ja.", "Nein."],
+                    "points": 2
+                },
+                {
+                    "question": "Wie kommst du mit Aussprache klar?",
+                    "answer": [true, "Sehr Gut", "Gut", "Schlecht", "Sehr Schlecht"],
+                    "points": [2, 1, -1, -2]
+                }, 
+                {
+                    "question": "Wie kommst du mit Grammatik klar?",
+                    "answer": [true, "Sehr Gut", "Gut", "Schlecht", "Sehr Schlecht"],
+                    "points": [2, 1, -1, -2]
+                }
+            ]
+        },
+        "kunstwissenschaften": {
+            "points": 0,
+            "faecher": ["musik", "kunst", "literatur"],
+            "metafaecher": ["informatik"],
+            "questions": [
+                {
+                    "question": "Singst du gerne?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 1
+                }, 
+                {
+                    "question": "Erschaffst du gerne neue Werke?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 2
+                },
+                {
+                    "question": "Bist du kreativ?",
+                    "answers": [false, "Ja.", "Nein."],
+                    "points": 2
+                },
+                {
+                    "question": "Bist du musikalisch?",
+                    "answer": [false, "Ja.", "Nein."],
+                    "points": 2
+                }
+            ]
+        }
+    }
+
+}
