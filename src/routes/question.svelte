@@ -3,67 +3,80 @@
     import questions from '../../static/questions.json';
 
     // import goto
-    import { goto } from '@sapper/app';
+    import {goto} from '@sapper/app';
 
-    let currentAnswer = "";
+    let currentAnswer = '';
 
     let currentQuestion = 0;
     let done = [];
-    let bereiche = questions["allebereiche"];
+    let bereiche = questions['allebereiche'];
     let points = {};
 
     bereiche.forEach(bereich => {
         points[bereich] = 0;
     });
-    
-    let currentBereich = bereiche[Math.random(0, bereiche.length - 1)];
+
+    let currentBereich = bereiche[0];
 
 
-
-    function nextQuestion() {
-        const currentquestionsBereich = questions["bereiche"][currentBereich]["questions"];
-        if (currentQuestion < currentquestionsBereich.length - 1) {
-            points[currentBereich] += currentquestionsBereich[currentQuestion]["points"][currentquestionsBereich[currentQuestion].answer.indexOf(currentAnswer)];
-            if(!currentAnswer == ""){
-                currentQuestion++;
-                currentAnswer = "";
-            } else {
-                alert("Bitte wähle mindestens eine Antwort aus!");
-            }
+    const handleSelbeKategorie = (questionsUnterrichtsfachPunkte, questionsUnterrichtsfach) => {
+        if (currentAnswer !== '') {
+            points[currentBereich] += questionsUnterrichtsfachPunkte[questionsUnterrichtsfach.answer.indexOf(currentAnswer)];
+            currentQuestion++;
+            currentAnswer = '';
         } else {
-            currentQuestion = 0;
-            done.push(currentBereich);
-            points[currentBereich] += currentquestionsBereich[currentQuestion]["points"][currentquestionsBereich[currentQuestion].answer.indexOf(currentAnswer)];
-            
-            let vorBereich = currentBereich
-            for(let i = 1; i < bereiche.length; i++) {
-                if (!done.includes(bereiche[i])) {
-                    console.log(bereiche[i]);
-                    currentBereich = bereiche[i];
-                    break;
-                }
-            }
-            currentAnswer = "";
-            if(vorBereich == currentBereich) {
-                console.log("kjalöksdjflöjaslkdfjlksdfkljsadföioasjdföaisodjf")
-                console.log(JSON.stringify(points));
-                alert("Du hast alle Bereiche durchlaufen!");
-                goto("/");
-            } else {
-                alert("Du hast alle Fragen beatnwortet. Du wirst nun weitergeleitet.");
-            }
-            
-            
+            alert('Bitte wähle mindestens eine Antwort aus!');
         }
-    }
+    };
 
-    function backQuestion() {
+    const handelKategorieReady = (questionsUnterrichtsfachPunkte, questionsUnterrichtsfach) => {
+        currentQuestion = 0;
+        done.push(currentBereich);
+        if (currentAnswer) {
+            points[currentBereich] += questionsUnterrichtsfachPunkte[questionsUnterrichtsfach.answer.indexOf(currentAnswer)];
+        }
+    };
+
+    const findeNaechstenBereich = () => {
+        for (let i = 1; i < bereiche.length; i++) {
+            if (!done.includes(bereiche[i])) {
+                return bereiche[i];
+            }
+        }
+        return undefined;
+    };
+
+    const handleNaechsteKategorie = (questionsUnterrichtsfachPunkte, questionsUnterrichtsfach) => {
+        handelKategorieReady(questionsUnterrichtsfachPunkte, questionsUnterrichtsfach);
+        currentBereich = findeNaechstenBereich();
+        currentAnswer = '';
+        if (!currentBereich) {
+            alert('Du hast alle Bereiche durchlaufen!');
+            console.log(currentBereich);
+            goto('/');
+        }
+
+    };
+
+    const nextQuestion = () => {
+        const questionsFachBereich = questions['bereiche'][currentBereich]['questions'];
+        const nochInDerSelbenKategorie = currentQuestion < questionsFachBereich.length - 1;
+        const questionsUnterrichtsfach = questionsFachBereich[currentQuestion];
+        const questionsUnterrichtsfachPunkte = questionsUnterrichtsfach['points'];
+        if (nochInDerSelbenKategorie) {
+            handleSelbeKategorie(questionsUnterrichtsfachPunkte, questionsUnterrichtsfach);
+        } else {
+            handleNaechsteKategorie(questionsUnterrichtsfachPunkte, questionsUnterrichtsfach);
+        }
+    };
+
+    const backQuestion = () => {
         if (currentQuestion > 0) {
             currentQuestion--;
         } else {
-            alert("Du bist bereits bei der ersten Frage angekommen.");
+            alert('Du bist bereits bei der ersten Frage angekommen.');
         }
-    }
+    };
 
     // onload().addEventListener("close", function() { UNFUNKTIONAL
     //     alert("Willst du das wirklich tun?")
@@ -74,7 +87,7 @@
 <style>
     .container {
         display: flex;
-        
+
     }
 
     h1 {
@@ -100,8 +113,8 @@
         margin: 0 80px;
         align-self: center;
         transition: all 0.2s ease-in-out;
-    }	
-    
+    }
+
     .answers {
         display: flex;
         flex-direction: column;
@@ -130,40 +143,39 @@
 </style>
 
 
-
 <div class="container">
 
-    <img on:click={() => backQuestion()} class="arrow left" src="icons/arrow_forward.svg" alt="icon für questions" draggable="false">
-    
-    <div class="Question">
-        <div class="col-12">
-            <h1>{questions["bereiche"][currentBereich]["questions"][currentQuestion]["question"]}</h1>
-        </div>
-        <div class="answers">
-            <form>
-                <ul>
-                    {#each questions["bereiche"][currentBereich]["questions"][currentQuestion]["answer"] as answer}
-                        {#if questions["bereiche"][currentBereich]["questions"][currentQuestion]["multiple"]}
-                            <li>
-                                <input type="checkbox" name="answer" bind:group={currentAnswer} value={answer}>
-                                <label for="answer">{answer}</label>
-                            </li>
-                        {:else}
-                            <li>
-                                <input type="radio" name="answer" bind:group={currentAnswer} value={answer}>
-                                <label for="answer">{answer}</label>
-                            </li>
-                        {/if}
-                    {/each}
-                </ul>                
-            </form>
-            {#if currentAnswer}
-                <p>Deine Antwort: {currentAnswer}</p>
+  <img on:click={() => backQuestion()} class="arrow left" src="icons/arrow_forward.svg" alt="icon für questions" draggable="false">
+
+  <div class="Question">
+    <div class="col-12">
+      <h1>{questions["bereiche"][currentBereich]["questions"][currentQuestion]["question"]}</h1>
+    </div>
+    <div class="answers">
+      <form>
+        <ul>
+          {#each questions["bereiche"][currentBereich]["questions"][currentQuestion]["answer"] as answer}
+            {#if questions["bereiche"][currentBereich]["questions"][currentQuestion]["multiple"]}
+              <li>
+                <input type="checkbox" name="answer" bind:group={currentAnswer} value={answer}>
+                <label for="answer">{answer}</label>
+              </li>
             {:else}
-                <p>Du musst min. 1 Antwort ausgewählt haben!</p>
-            {/if}   
-        </div>
-    </div> 
-    <img on:click={() => nextQuestion()} class="arrow right" src="icons/arrow_forward.svg" alt="icon für questions" draggable="false">
+              <li>
+                <input type="radio" name="answer" bind:group={currentAnswer} value={answer}>
+                <label for="answer">{answer}</label>
+              </li>
+            {/if}
+          {/each}
+        </ul>
+      </form>
+      {#if currentAnswer}
+        <p>Deine Antwort: {currentAnswer}</p>
+      {:else}
+        <p>Du musst min. 1 Antwort ausgewählt haben!</p>
+      {/if}
+    </div>
+  </div>
+  <img on:click={() => nextQuestion()} class="arrow right" src="icons/arrow_forward.svg" alt="icon für questions" draggable="false">
 
 </div>
