@@ -22,10 +22,14 @@
 	img {
 		width: 30px;
 	}
+
+	.logo {
+		width : 120px;
+	}
 </style>
 
 <nav>
 	<a href="/"><img src="icons/logout.svg" alt="logout"></a>
-	<a>LOGO</a>
+	<a><img class="logo" src="logo.png" alt="betterLuPo"></a>
 	<a href="/help"><img src="icons/help.svg" alt="help"></a>
 </nav>
