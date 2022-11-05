@@ -26,6 +26,6 @@
 
 <nav>
 	<a href="/"><img src="icons/logout.svg" alt="logout"></a>
-	<a>LOGO</a>
+	<!-- <a>LOGO</a> -->
 	<a href="/help"><img src="icons/help.svg" alt="help"></a>
 </nav>

@@ -1,12 +1,12 @@
 <script>
 
     import questions from '../../static/questions.json';
-
-    // import goto
+    // import sortData from components
     import {goto} from '@sapper/app';
+    import { onMount } from 'svelte';
+    
 
     let currentAnswer = '';
-
     let currentQuestion = 0;
     let done = [];
     let bereiche = questions['allebereiche'];
@@ -46,28 +46,56 @@
         return undefined;
     };
 
+    const findeNaechstesFach = () => {
+        for (let i = 1; i < questions[currentBereich].length; i++) {
+            if (!done.includes(questions[currentBereich][i])) {
+                return questions[currentBereich][i];
+            }
+        }
+        return undefined;
+    };
+
     const handleNaechsteKategorie = (questionsUnterrichtsfachPunkte, questionsUnterrichtsfach) => {
         handelKategorieReady(questionsUnterrichtsfachPunkte, questionsUnterrichtsfach);
         currentBereich = findeNaechstenBereich();
         currentAnswer = '';
         if (!currentBereich) {
-            alert('Du hast alle Bereiche durchlaufen!');
-            console.log(currentBereich);
-            goto('/');
+            localStorage.setItem('sortPointsdataStore', JSON.stringify(sortPoints()));
+            goto("/faecher");
+            // bereiche = [];
+            // sorted.forEach(sorted => {
+            //     bereiche.push(sorted[0]);
+            // });
+            // currentBereich = sorted[0][0];
+            // currentFach = questions['bereiche'][currentBereich]["faecher"][0];
         }
 
     };
 
+    const sortPoints = () => {
+        let sortedPoints = [];
+        for (let bereich in points) {
+            sortedPoints.push([bereich, points[bereich]]);
+        }
+        sortedPoints.sort(function (a, b) {
+            return b[1] - a[1];
+        });
+        return sortedPoints;
+    };
+
     const nextQuestion = () => {
+        
         const questionsFachBereich = questions['bereiche'][currentBereich]['questions'];
         const nochInDerSelbenKategorie = currentQuestion < questionsFachBereich.length - 1;
         const questionsUnterrichtsfach = questionsFachBereich[currentQuestion];
         const questionsUnterrichtsfachPunkte = questionsUnterrichtsfach['points'];
         if (nochInDerSelbenKategorie) {
-            handleSelbeKategorie(questionsUnterrichtsfachPunkte, questionsUnterrichtsfach);
+            handleSelbeKategorie(questionsUnterrichtsfachPunkte, questionsUnterrichtsfach, "bereich");
         } else {
-            handleNaechsteKategorie(questionsUnterrichtsfachPunkte, questionsUnterrichtsfach);
+            handleNaechsteKategorie(questionsUnterrichtsfachPunkte, questionsUnterrichtsfach, "bereich");
         }
+
+
     };
 
     const backQuestion = () => {
@@ -82,7 +110,22 @@
     //     alert("Willst du das wirklich tun?")
 
     // });
+
+    function BeforeUnload (Event) {
+        
+        
+        //alert("Du hast noch nicht alle Fragen beantwortet. Willst du das wirklich tun?");
+        Event.preventDefault();
+        Event.returnValue = 'Bist du sicher das du abhauen möchtest?';
+        
+        
+        return 'Bist du sicher das du abhauen möchtest?';
+    };
+
 </script>
+
+
+<svelte:window on:beforeunload={BeforeUnload}/> 
 
 <style>
     .container {
@@ -149,24 +192,36 @@
 
   <div class="Question">
     <div class="col-12">
-      <h1>{questions["bereiche"][currentBereich]["questions"][currentQuestion]["question"]}</h1>
+
+        {#if currentBereich}
+            <h1>{questions["bereiche"][currentBereich]["questions"][currentQuestion]["question"]}</h1>
+        {:else}
+            <h1>Es konnte keine neue Frage generiert werden -> Leite weiter</h1>
+        {/if}
+
+
+      
     </div>
     <div class="answers">
       <form>
         <ul>
-          {#each questions["bereiche"][currentBereich]["questions"][currentQuestion]["answer"] as answer}
-            {#if questions["bereiche"][currentBereich]["questions"][currentQuestion]["multiple"]}
-              <li>
-                <input type="checkbox" name="answer" bind:group={currentAnswer} value={answer}>
-                <label for="answer">{answer}</label>
-              </li>
-            {:else}
-              <li>
-                <input type="radio" name="answer" bind:group={currentAnswer} value={answer}>
-                <label for="answer">{answer}</label>
-              </li>
-            {/if}
-          {/each}
+        {#if currentBereich}
+            {#each questions["bereiche"][currentBereich]["questions"][currentQuestion]["answer"] as answer}
+                {#if questions["bereiche"][currentBereich]["questions"][currentQuestion]["multiple"]}
+                    <li>
+                    <input type="checkbox" name="answer" bind:group={currentAnswer} value={answer} draggable="false">
+                    <label for="answer">{answer}</label>
+                    </li>
+                {:else}
+                    <li>
+                    <input type="radio" name="answer" bind:group={currentAnswer} value={answer} draggable="false">
+                    <label for="answer">{answer}</label>
+                    </li>
+                {/if}
+            {/each}
+        {:else}
+          <h1>Es konnte keine neue Frage generiert werden -> Leite weiter</h1>
+        {/if}
         </ul>
       </form>
       {#if currentAnswer}
