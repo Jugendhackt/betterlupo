@@ -1,20 +1,51 @@
 <script>
 
-    import questions from 'questions.json';
+    import questions from '../../static/questions.json';
 
     let currentAnswer = "";
 
     let currentQuestion = 0;
-    
+    let done = [];
+    let bereiche = questions["allebereiche"];
+    for(let i = 1; i < bereiche.length; i++) {
+        bereiche[i].push(0);
+    }
+    let currentBereich = bereiche[0];
+
 
 
     function nextQuestion() {
-        if (currentQuestion < questions["bereiche"].length - 1) {
+        if (currentQuestion < questions["bereiche"][currentBereich]["questions"].length - 1) {
             
-            currentQuestion++;
-            currentAnswer = "";
+            bereiche[currentBereich]["points"] += questions["bereiche"][currentBereich]["questions"][currentQuestion]["points"];
+            console.log(bereiche[currentBereich]["points"]);
+            if(!currentAnswer == ""){
+                currentQuestion++;
+                currentAnswer = "";
+            } else {
+                alert("Bitte wähle mindestens eine Antwort aus!");
+            }
+            
+
         } else {
-            alert("Du hast alle Fragen beatnwortet. Du wirst nun weitergeleitet.");
+            currentQuestion = 0;
+            done.push(currentBereich);
+            let vorBereich = currentBereich
+            for(let i = 1; i < bereiche.length; i++) {
+                if (!done.includes(bereiche[i])) {
+                    console.log(bereiche[i]);
+                    currentBereich = bereiche[i];
+                    break;
+                }
+            }
+            currentAnswer = "";
+            if(vorBereich == currentBereich) {
+                alert("Du hast alle Bereiche durchlaufen!");
+            } else {
+                alert("Du hast alle Fragen beatnwortet. Du wirst nun weitergeleitet.");
+            }
+            
+            
         }
     }
 
@@ -25,6 +56,11 @@
             alert("Du bist bereits bei der ersten Frage angekommen.");
         }
     }
+
+    // onload().addEventListener("close", function() { UNFUNKTIONAL
+    //     alert("Willst du das wirklich tun?")
+
+    // });
 </script>
 
 <style>
@@ -72,7 +108,6 @@
     }
 
     input[type="radio"] {
-        /* appearance: none; */
         background-color: rgb(255, 255, 255);
         margin: 0;
         padding: 0;
@@ -94,13 +129,13 @@
     
     <div class="Question">
         <div class="col-12">
-            <h1>{questions["bereiche"]["naturwissenschaften"]["questions"][currentQuestion]}</h1>
+            <h1>{questions["bereiche"][currentBereich]["questions"][currentQuestion]["question"]}</h1>
         </div>
-        <!-- <div class="answers">
+        <div class="answers">
             <form>
                 <ul>
-                    {#each questions[currentQuestion][1] as answer}
-                        {#if questions[currentQuestion][2]}
+                    {#each questions["bereiche"][currentBereich]["questions"][currentQuestion]["answer"] as answer}
+                        {#if questions["bereiche"][currentBereich]["questions"][currentQuestion]["multiple"]}
                             <li>
                                 <input type="checkbox" name="answer" bind:group={currentAnswer} value={answer}>
                                 <label for="answer">{answer}</label>
@@ -119,8 +154,8 @@
             {:else}
                 <p>Du musst min. 1 Antwort ausgewählt haben!</p>
             {/if}   
-        </div> -->
-    </div>
+        </div>
+    </div> 
     <img on:click={() => nextQuestion()} class="arrow right" src="icons/arrow_forward.svg" alt="icon für questions" draggable="false">
 
 </div>
