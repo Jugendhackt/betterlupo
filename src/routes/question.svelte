@@ -2,6 +2,9 @@
 
     import questions from '../../static/questions.json';
 
+    // import goto
+    import { goto } from '@sapper/app';
+
     let currentAnswer = "";
 
     let currentQuestion = 0;
@@ -10,11 +13,10 @@
     let points = {};
 
     bereiche.forEach(bereich => {
-        console.log(bereich);
         points[bereich] = 0;
     });
     
-    let currentBereich = bereiche[0];
+    let currentBereich = bereiche[Math.random(0, bereiche.length - 1)];
 
 
 
@@ -28,7 +30,6 @@
             } else {
                 alert("Bitte wähle mindestens eine Antwort aus!");
             }
-
         } else {
             currentQuestion = 0;
             done.push(currentBereich);
@@ -44,7 +45,10 @@
             }
             currentAnswer = "";
             if(vorBereich == currentBereich) {
+                console.log("kjalöksdjflöjaslkdfjlksdfkljsadföioasjdföaisodjf")
+                console.log(JSON.stringify(points));
                 alert("Du hast alle Bereiche durchlaufen!");
+                goto("/");
             } else {
                 alert("Du hast alle Fragen beatnwortet. Du wirst nun weitergeleitet.");
             }
@@ -141,7 +145,7 @@
                     {#each questions["bereiche"][currentBereich]["questions"][currentQuestion]["answer"] as answer}
                         {#if questions["bereiche"][currentBereich]["questions"][currentQuestion]["multiple"]}
                             <li>
-                                <input type="checkbox" name="answer" bind:group={currentAnswer} value={answer.indexof(currentAnswer)}>
+                                <input type="checkbox" name="answer" bind:group={currentAnswer} value={answer}>
                                 <label for="answer">{answer}</label>
                             </li>
                         {:else}

@@ -3,7 +3,7 @@
     "naturwissenschaften",
     "gesellschaftswissenschaften",
     "sprachen",
-    "kunstwisenschaften"
+    "kunstwissenschaften"
   ],
 
   "faecher": {
@@ -29,7 +29,8 @@
       "questions": [
         {
           "question": "Kannst du gut Vokabeln lernen?",
-          "answer": [false, "Ja.", "Nein."]
+          "multiple": false,
+          "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Bist du an der englischen Sprache interessiert?",
@@ -657,7 +658,7 @@
         },
         {
           "question": "Wie kommst du mit Vokabeln klar?",
-          "multiple": true,
+          "multiple": false,
           "answer": ["Sehr Gut", "Gut", "Schlecht", "Sehr Schlecht"],
           "points": [2, 1, -1, -2]
         },
@@ -675,13 +676,13 @@
         },
         {
           "question": "Wie kommst du mit Aussprache klar?",
-          "multiple": true,
+          "multiple": false,
           "answer": ["Sehr Gut", "Gut", "Schlecht", "Sehr Schlecht"],
           "points": [2, 1, -1, -2]
         },
         {
           "question": "Wie kommst du mit Grammatik klar?",
-          "multiple": true,
+          "multiple": false,
           "answer": ["Sehr Gut", "Gut", "Schlecht", "Sehr Schlecht"],
           "points": [2, 1, -1, -2]
         }
@@ -706,7 +707,8 @@
         },
         {
           "question": "Bist du kreativ?",
-          "answer": [false, "Ja.", "Nein."],
+          "multiple": false,
+          "answer": ["Ja.", "Nein."],
           "points": [2, 0]
         },
         {
