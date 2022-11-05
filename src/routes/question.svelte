@@ -7,29 +7,34 @@
     let currentQuestion = 0;
     let done = [];
     let bereiche = questions["allebereiche"];
-    for(let i = 1; i < bereiche.length; i++) {
-        bereiche[i].push(0);
-    }
+    let points = {};
+
+    bereiche.forEach(bereich => {
+        console.log(bereich);
+        points[bereich] = 0;
+    });
+    
     let currentBereich = bereiche[0];
 
 
 
     function nextQuestion() {
-        if (currentQuestion < questions["bereiche"][currentBereich]["questions"].length - 1) {
-            
-            bereiche[currentBereich]["points"] += questions["bereiche"][currentBereich]["questions"][currentQuestion]["points"];
-            console.log(bereiche[currentBereich]["points"]);
+        const currentquestionsBereich = questions["bereiche"][currentBereich]["questions"];
+        if (currentQuestion < currentquestionsBereich.length - 1) {
+            console.log(currentAnswer)
+            points[currentBereich] += currentquestionsBereich[currentQuestion]["points"][currentAnswer];
             if(!currentAnswer == ""){
                 currentQuestion++;
                 currentAnswer = "";
             } else {
                 alert("Bitte wähle mindestens eine Antwort aus!");
             }
-            
 
         } else {
             currentQuestion = 0;
             done.push(currentBereich);
+            points[currentBereich] += currentquestionsBereich[currentQuestion]["points"];
+            console.log(points[currentBereich]);
             let vorBereich = currentBereich
             for(let i = 1; i < bereiche.length; i++) {
                 if (!done.includes(bereiche[i])) {
@@ -137,7 +142,7 @@
                     {#each questions["bereiche"][currentBereich]["questions"][currentQuestion]["answer"] as answer}
                         {#if questions["bereiche"][currentBereich]["questions"][currentQuestion]["multiple"]}
                             <li>
-                                <input type="checkbox" name="answer" bind:group={currentAnswer} value={answer}>
+                                <input type="checkbox" name="answer" bind:group={currentAnswer} value={answer.indexof(currentAnswer)}>
                                 <label for="answer">{answer}</label>
                             </li>
                         {:else}

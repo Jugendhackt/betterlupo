@@ -563,31 +563,31 @@
           "question": "Bist du gut im abstrakten, logischen und analytischen Denken?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 1
+          "points": [2, 0]
         },
         {
           "question": "Hast du Interesse an neuen und innovativen Technologien?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 1
+          "points": [2, 0]
         },
         {
           "question": "Fasziniert dich die Umwelt?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 1
+          "points": [2, 0]
         },
         {
           "question": "Hast du ein technisches Grundverständnis?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 2
+          "points": [2, 0]
         },
         {
           "question": "Hinterfragst du wie natürliche Prozesse in deinem Leben funktionieren?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 2
+          "points": [2, 0]
         }
       ]
     },
@@ -604,37 +604,37 @@
           "question": "Interessiert du dich für die Gesellschaft?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 1
+          "points": [2, 0]
         },
         {
           "question": "Bist du politisch aktiv?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 1
+          "points": [2, 0]
         },
         {
           "question": "Interssiert es dich, wie Menschen zusammenleben?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 1
+          "points": [2, 0]
         },
         {
           "question": "Interssierst du dich für das Wohlbefinden deiner Mitmenschen?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 2
+          "points": [2, 0]
         },
         {
           "question": "Bist du ein/e gute/r Zuhörer/in?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 2
+          "points": [2, 0]
         },
         {
           "question": "Bist du ein/e gute/r Redner/in?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 2
+          "points": [2, 0]
         }
       ]
     },
@@ -653,7 +653,7 @@
           "question": "Sprichst du gerne andere Sprachen?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 2
+          "points": [2, 0]
         },
         {
           "question": "Wie kommst du mit Vokabeln klar?",
@@ -665,13 +665,13 @@
           "question": "Interessierst du dich für (neue) Kulturen?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 2
+          "points": [2, 0]
         },
         {
           "question": "Hast du ein gutes Sprachgefühl?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 2
+          "points": [2, 0]
         },
         {
           "question": "Wie kommst du mit Aussprache klar?",
@@ -696,24 +696,24 @@
           "question": "Singst du gerne?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 1
+          "points": [2, 0]
         },
         {
           "question": "Erschaffst du gerne neue Werke?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 2
+          "points": [2, 0]
         },
         {
           "question": "Bist du kreativ?",
           "answer": [false, "Ja.", "Nein."],
-          "points": 2
+          "points": [2, 0]
         },
         {
           "question": "Bist du musikalisch?",
           "multiple": false,
           "answer": ["Ja.", "Nein."],
-          "points": 2
+          "points": [2, 0]
         }
       ]
     }
