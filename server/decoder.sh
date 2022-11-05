@@ -13,7 +13,7 @@ do
     sed '$ s/.$//' $2tmp2.json >> $2file.json
     rm $2tmp.json
     rm $2tmp2.json
-    if [ $[1+$i] -lt ${#tables[@]} ]
+    if [ $((1 + $i)) -lt ${#tables[@]} ]
     then
     echo -e "]," >> $2file.json
     else
