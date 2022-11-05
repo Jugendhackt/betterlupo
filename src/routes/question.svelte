@@ -21,8 +21,7 @@
     function nextQuestion() {
         const currentquestionsBereich = questions["bereiche"][currentBereich]["questions"];
         if (currentQuestion < currentquestionsBereich.length - 1) {
-            console.log(currentAnswer)
-            points[currentBereich] += currentquestionsBereich[currentQuestion]["points"][currentAnswer];
+            points[currentBereich] += currentquestionsBereich[currentQuestion]["points"][currentquestionsBereich[currentQuestion].answer.indexOf(currentAnswer)];
             if(!currentAnswer == ""){
                 currentQuestion++;
                 currentAnswer = "";
@@ -33,8 +32,8 @@
         } else {
             currentQuestion = 0;
             done.push(currentBereich);
-            points[currentBereich] += currentquestionsBereich[currentQuestion]["points"];
-            console.log(points[currentBereich]);
+            points[currentBereich] += currentquestionsBereich[currentQuestion]["points"][currentquestionsBereich[currentQuestion].answer.indexOf(currentAnswer)];
+            
             let vorBereich = currentBereich
             for(let i = 1; i < bereiche.length; i++) {
                 if (!done.includes(bereiche[i])) {
