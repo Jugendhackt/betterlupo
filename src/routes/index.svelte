@@ -4,48 +4,37 @@
 </script>
 
 <style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
 
 	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
+		width: 50%;
+		margin: auto;
+		margin-bottom: 1em;
 	}
 
-	p {
-		margin: 1em auto;
+	.bottom {
+		position: absolute;
+		text-align: center;
+		bottom: 2%;
+		left: 50%;
+		transform: translate(-50%, 0);
+		font-size: 12px;
 	}
 
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
+	p{
+		margin:0;
 	}
+
 </style>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>BetterLuPo</title>
 </svelte:head>
 
-<h1>Great success!</h1>
-
-<figure>
-	<img alt="Success Kid" src="{successkid}">
-	<figcaption>Have fun with Sapper!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+<main>
+	<div style="display:flex; align-items:center; justify-content:center;">
+	<img src="icons/upload.svg" alt="upload">
+	</div>
+	<p>LuPo Datei hochladen</p>
+	<p class="bottom">BetterLuPo sendet deine Datei zur umwandlung an unsere Server. <br>
+		Wir löschen die Datei sobald du fertig bist und speichern keine Daten.</p>
+</main>

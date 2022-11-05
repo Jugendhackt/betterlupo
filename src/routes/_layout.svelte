@@ -7,16 +7,34 @@
 <style>
 	main {
 		position: relative;
-		max-width: 56em;
-		background-color: white;
-		padding: 2em;
-		margin: 0 auto;
-		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		max-width: 100%;
+		overflow: hidden;
+		background-color: #EF233C;
+		flex: 1;
 	}
+
+
+	body{
+		margin: 0;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	
 </style>
 
-<Nav {segment}/>
+<body>
+	<Nav {segment}/>
 
-<main>
-	<slot></slot>
-</main>
+	<main>
+		
+		<slot></slot>
+	</main>
+</body>
