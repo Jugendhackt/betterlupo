@@ -14,11 +14,30 @@
         return options.filter(option => option.selected);
     }
 
+    export function getSelectedHours(){
+        let hours = 0;
+        options.forEach(option => {
+            if(option.selected){
+                hours += option.weekhours;
+            }
+        });
+        return hours;
+    }
+
     export function getUnselected(){
         return options.filter(option => !option.selected);
     }
 
-    export function addOption(name, canedit = true, abi = false, language = false){
+
+    /**
+     * 
+     * @param name  Name of the subject 
+     * @param hours Hours per week
+     * @param canedit   Can the user edit the subject
+     * @param abi   Abi level
+     * @param language   Is the subject a language(true/false)
+     */
+    export function addOption(name, hours, canedit = true, abi = false, language = false){
         if(options.filter(option => option.name === name).length > 0){
             return false;
         }
@@ -29,8 +48,9 @@
             allowabi: abi,
             abi: -1,
             lang: language,
-            langstart: "0",
-            langnum: "0"
+            langstart: "5",
+            langnum: "1",
+            weekhours: hours
         }
         options = [...options, data];
         dispatch('refresh', {

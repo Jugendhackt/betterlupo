@@ -76,10 +76,10 @@
             </select>
         {/if}
         {#if data.allowabi}
-            <p on:click={changeabi} id="abifach">{abi}</p>
+            <p title="Abifach" on:click={changeabi} id="abifach">{abi}</p>
         {/if}
         {#if data.editable}
-            <a on:click={removeSelf}><img src="icons/remove.svg"></a>
+            <a title="Entfernen" on:click={removeSelf}><img src="icons/remove.svg"></a>
         {/if}
     </div>
 

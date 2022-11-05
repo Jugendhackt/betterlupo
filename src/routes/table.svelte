@@ -6,16 +6,17 @@
     let grundkurse_schriftlich;
     let grundkurse_mündlich;
     let global_options = {};
+    let global_hours = 0;
 
     let total_selected;
 
     onMount(async () => {
         setTimeout(() => {
-            Leistungskurse.addOption("Deutsch", false, true);
+            Leistungskurse.addOption("Deutsch", 5, false, true);
             Leistungskurse.selectOption("Deutsch");
-            Leistungskurse.addOption("Englisch", true, true);
-            Leistungskurse.addOption("Mathe");
-            Leistungskurse.addOption("Spanisch", true, true, true);
+            Leistungskurse.addOption("Englisch", 5, true, true);
+            Leistungskurse.addOption("Mathe", 5);
+            Leistungskurse.addOption("Spanisch", 5, true, true, true);
         }, 100);
     });
 
@@ -24,6 +25,7 @@
         global_options[event.detail.origin] = event.detail.options;
         console.log(global_options);
         total_selected = Leistungskurse.getSelected().length + grundkurse_schriftlich.getSelected().length + grundkurse_mündlich.getSelected().length;
+        global_hours = Leistungskurse.getSelectedHours() + grundkurse_schriftlich.getSelectedHours() + grundkurse_mündlich.getSelectedHours();
     }
 
     /**
@@ -39,7 +41,11 @@
 
 </script>
 
-
+<div style="display: flex; flex-direction: row; justify-content: space-around; column-gap:12px;">
+    <StatBox description="Stunden / Woche" value={global_hours + " / 40"} icon="icons/time.svg" />
+    <StatBox description="Fächern" value={total_selected + " / 10"} icon="icons/school.svg" />
+    <StatBox description="Datei herunterladen" value="Fertig" icon="icons/done.svg" style="secondary" onclick={() => {console.log("AAA")}} hoverable={true}/>
+    </div>
 
 <TableSelection on:refresh={refresh} bind:this={Leistungskurse} title="Leistungskurse"/>
 
@@ -49,11 +55,7 @@
 
 <p></p>
 
-<div style="display: flex; flex-direction: row; justify-content: space-around; column-gap:12px;">
-<StatBox description="Stunden / Woche" value="0 / 40" icon="icons/time.svg" />
-<StatBox description="Fächern" value={total_selected + " / 10"} icon="icons/school.svg" />
-<StatBox description="Datei herunterladen" value="Fertig" icon="icons/done.svg" style="secondary" onclick={() => {console.log("AAA")}} hoverable={true}/>
-</div>
+
 <style>
 
 </style>
