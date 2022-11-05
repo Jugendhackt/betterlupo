@@ -1,6 +1,7 @@
 <script>
 	import successkid from 'images/successkid.jpg';
-
+	import { onMount } from 'svelte';
+	import { createPopup } from '../components/PopupManager.svelte';
 </script>
 
 <style>
