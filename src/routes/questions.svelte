@@ -80,7 +80,11 @@
         sortedPoints.sort(function (a, b) {
             return b[1] - a[1];
         });
-        return sortedPoints;
+
+        return sortedPoints.reduce((acc, [bereich, points]) => {
+            acc[bereich] = points;
+            return acc;
+        }, {});
     };
 
     const nextQuestion = () => {
