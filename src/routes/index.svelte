@@ -14,6 +14,7 @@
 	onMount(async () => {
 		let upload = new Dropzone("div#upload-lupo", { url: "/"}, uploadOption);
 		upload.on("addedfile", async (upfile) => {
+			document.getElementById("upicon").innerHTML="<div class='spinner'></div>";
   			var popup = createPopup("Bitte warten...", "Deine Datei wird hochgeladen...");
 			let formData = new FormData();
 			formData.append("file", upfile);
@@ -24,20 +25,24 @@
 					method: "POST",
 					body: formData
 				}).then(async (response) => {
-					console.log("Response recieved")
-					let dataobj = await response.json();
-					console.log(dataobj);
-					if(response.status == 200){
-						localStorage.setItem("lupo", JSON.stringify(dataobj));
-						goto("/select")
-					}else{
-						console.log("An Error occured!")
-						popup.close();
+					try{
+						document.getElementById("upicon").innerHTML="<img style='width:80px;' src='icons/upload.svg' alt='upload'> <p>LuPo Datei hochladen</p>";
+						console.log("Response recieved")
+						let dataobj = await response.json();
+						console.log(dataobj);
+						if(response.status == 200){
+							localStorage.setItem("lupo", JSON.stringify(dataobj));
+							goto("/select")
+						}else{
+							console.log("An Error occured!")
+							createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden!");
+						}
+					}catch(e){
+						console.log(e);
 						createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden!");
 					}
 			})
 			} catch (error) {
-				popup.close();
 				createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden! <br>" + error);
 			}
 			upload.removeAllFiles(true);
@@ -50,7 +55,20 @@
 <style>
 
 	img {
-		width: 50%;
+		width: 80px;
+		margin: auto;
+		margin-bottom: 1em;
+	}
+
+	#upicon{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#upicon img{
+		width: 80px;
 		margin: auto;
 		margin-bottom: 1em;
 	}
@@ -75,11 +93,12 @@
 </svelte:head>
 
 <main>
-	
 	<div id="upload-lupo" style="display:flex; align-items:center; justify-content:center;">
-	<img src="icons/upload.svg" alt="upload">
+		<div id="upicon">
+			<img src="icons/upload.svg" alt="upload">
+			<p>LuPo Datei hochladen</p>
+		</div>
 	</div>
-	<p>LuPo Datei hochladen</p>
 	<p class="bottom">BetterLuPo sendet deine Datei zur umwandlung an unsere Server. <br>
 		Wir löschen die Datei sobald du fertig bist und speichern keine Daten.</p>
 </main>
