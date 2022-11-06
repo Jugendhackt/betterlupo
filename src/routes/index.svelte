@@ -31,6 +31,7 @@
 						popup.close();
 						popup = createPopup("Erfolg!", "Deine Datei wurde erfolgreich hochgeladen!");
 						localStorage.setItem("lupo", JSON.stringify(dataobj));
+						goto("/select")
 					}else{
 						console.log("An Error occured!")
 						popup.close();
@@ -42,7 +43,6 @@
 				createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden! <br>" + error);
 			}
 			upload.removeAllFiles(true);
-			goto("/select")
 			popup.close();
 		});
 	})

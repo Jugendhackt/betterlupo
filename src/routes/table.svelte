@@ -24,7 +24,7 @@
             
             const schuelerfaecher = lupo["ABP_SchuelerFaecher"]
             const faecherkuerzel = schuelerfaecher.map((fach) => fach["FachKrz"]);
-            faecherkuerzel.array.forEach(element => {
+            faecherkuerzel.forEach(element => {
                 Leistungskurse.addOption(kuerzel, 5, true, true, false)
                 grundkurse_schriftlich.addOption(kuerzel, 5, true, true, false)
                 grundkurse_mündlich.addOption(kuerzel, 5, true, true, false)
