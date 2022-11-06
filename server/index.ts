@@ -23,6 +23,7 @@ app.post('/convert/json', async (req, res) => {
 
     const output = await exec('./decoder.sh /uploaded_files/' + name + ' converted/', { encoding: 'utf-8' });  // the default is 'buffer'
     let data = await JSON.parse(fs.readFileSync('converted/file.json', 'utf8'));
+    console.log(data)
     res.send(data);
 });
 
