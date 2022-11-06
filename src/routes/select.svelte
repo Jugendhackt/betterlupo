@@ -32,6 +32,7 @@
 
     .select img{
         transition: all .4s ease-in-out;
+        align-self: center;
     }
 
 
