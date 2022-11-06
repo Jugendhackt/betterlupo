@@ -18,14 +18,16 @@
 			let formData = new FormData();
 			formData.append("file", upfile);
 			formData.append("name", "Max_Mustermann");
+			let res;
 			try {
-				await fetch("http://" + window.location.hostname + ":3000/convert/json", {
+				res = await fetch("http://" + window.location.hostname + ":3000/convert/json", {
 					method: "POST",
 					body: formData
 				}).then((response) => {
 					if(response.status == 200){
 						popup.close();
 						popup = createPopup("Erfolg!", "Deine Datei wurde erfolgreich hochgeladen!");
+						localStorage.setItem("lupo", JSON.stringify(res));
 					}else{
 						popup.close();
 						createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden!");
