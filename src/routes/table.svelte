@@ -12,11 +12,11 @@
 
     let total_selected;
 
-    let lupo;
+    let lupo = {};
 
     onMount(async () => {
         setTimeout(() => {
-            lupo = localStorage.getItem("lupo")
+            lupo = JSON.parse(localStorage.getItem("lupo"))
             if(!lupo){
                 goto('/');
             }
