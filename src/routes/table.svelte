@@ -20,11 +20,15 @@
             if(!lupo){
                 goto('/');
             }
-            Leistungskurse.addOption("Deutsch", 5, false, true);
-            Leistungskurse.selectOption("Deutsch");
-            Leistungskurse.addOption("Englisch", 5, true, true);
-            Leistungskurse.addOption("Mathe", 5);
-            Leistungskurse.addOption("Spanisch", 5, true, true, true);
+            //-------------
+            
+            const schuelerfaecher = lupo["ABP_SchuelerFaecher"]
+            const faecherkuerzel = schuelerfaecher.map((fach) => fach["FachKrz"]);
+            faecherkuerzel.array.forEach(element => {
+                Leistungskurse.addOption(kuerzel, 5, true, true, false)
+                grundkurse_schriftlich.addOption(kuerzel, 5, true, true, false)
+                grundkurse_mündlich.addOption(kuerzel, 5, true, true, false)
+            });
         }, 100);
     });
 
@@ -34,6 +38,9 @@
         console.log(global_options);
         total_selected = Leistungskurse.getSelected().length + grundkurse_schriftlich.getSelected().length + grundkurse_mündlich.getSelected().length;
         global_hours = Leistungskurse.getSelectedHours() + grundkurse_schriftlich.getSelectedHours() + grundkurse_mündlich.getSelectedHours();
+    
+        //-------------------
+
     }
 
     /**
