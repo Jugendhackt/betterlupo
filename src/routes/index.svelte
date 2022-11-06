@@ -11,7 +11,7 @@
 	}
 
 	//TODO: File types .lpo!!!!
-	onMount(() => {
+	onMount(async () => {
 		let upload = new Dropzone("div#upload-lupo", { url: "/"}, uploadOption);
 		upload.on("addedfile", async (upfile) => {
   			var popup = createPopup("Bitte warten...", "Deine Datei wird hochgeladen...");
@@ -20,15 +20,19 @@
 			formData.append("name", "Max_Mustermann");
 			let res;
 			try {
-				await fetch("http://" + window.location.hostname + ":3000/convert/json", {
+				fetch("http://" + window.location.hostname + ":3000/convert/json", {
 					method: "POST",
 					body: formData
-				}).then((response) => {
+				}).then(async (response) => {
+					console.log("Response recieved")
+					let dataobj = await response.json();
+					console.log(dataobj);
 					if(response.status == 200){
 						popup.close();
 						popup = createPopup("Erfolg!", "Deine Datei wurde erfolgreich hochgeladen!");
-						localStorage.setItem("lupo", JSON.stringify(response.json()));
+						localStorage.setItem("lupo", JSON.stringify(dataobj));
 					}else{
+						console.log("An Error occured!")
 						popup.close();
 						createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden!");
 					}

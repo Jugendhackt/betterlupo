@@ -1,5 +1,7 @@
 <script>
     import { onMount } from 'svelte';
+    import { goto } from '@sapper/app'
+    import { createPopup } from '../components/PopupManager.svelte';
     import StatBox from '../components/StatBox.svelte';
     import TableSelection from '../components/TableSelection.svelte';
     let Leistungskurse;
@@ -10,8 +12,14 @@
 
     let total_selected;
 
+    let lupo;
+
     onMount(async () => {
         setTimeout(() => {
+            lupo = localStorage.getItem("lupo")
+            if(!lupo){
+                goto('/');
+            }
             Leistungskurse.addOption("Deutsch", 5, false, true);
             Leistungskurse.selectOption("Deutsch");
             Leistungskurse.addOption("Englisch", 5, true, true);
@@ -29,7 +37,7 @@
     }
 
     /**
-     * object.addOption(name) - Fach hinzufügen
+     * object.addOption(name, hours, canedit = true, abi = false, language = false) - Fach hinzufügen
      * object.removeOption(name) - Fach entfernen
      * object.selectOption(name) - Fach auswählen
      * object.unselectedOptions(name) - Fach abwählen
