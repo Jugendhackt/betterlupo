@@ -14,15 +14,15 @@ app.use(fileUpload())
 app.use(express.json());
 
 const PORT = 3000;
-app.post('/convert/json', (req, res) => {
+app.post('/convert/json', async (req, res) => {
     let { name } = req.body;
     req.files.file.mv('uploaded_files/' + name + '.lpo'
     );
 
     // FILE SAVED AS 'uploaded_files/NAME.lpo'
 
-    const output = exec('./decoder.sh /uploaded_files/' + name + ' converted/', { encoding: 'utf-8' });  // the default is 'buffer'
-    let data = JSON.parse(fs.readFile("converted/file.json")) //PUT THE JSON DATA IN HERE
+    const output = await exec('./decoder.sh /uploaded_files/' + name + ' converted/', { encoding: 'utf-8' });  // the default is 'buffer'
+    let data = await JSON.parse(fs.readFileSync('converted/file.json', 'utf8'));
     res.send(data);
 });
 
