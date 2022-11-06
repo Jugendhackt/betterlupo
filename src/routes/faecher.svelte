@@ -17,10 +17,16 @@
         const reihenfolge = JSON.parse(
             localStorage.getItem("sortPointsdataStore")
         );
-        console.log(JSON.stringify(reihenfolge));
-        currentBereich = Object.keys(reihenfolge)[0];
-        currentFach = questions["bereiche"][currentBereich]["faecher"][0];
-        console.log(currentFach);
+        
+        if(reihenfolge) {
+            currentBereich = Object.keys(reihenfolge)[0];
+            currentFach = questions["bereiche"][currentBereich]["faecher"][0];
+        } else {
+            alert("Bitte fange am Anfang der Umfrage an!");
+            goto("/questions");
+        }
+
+
     });
 
     const getNextBereich = () => {
@@ -28,6 +34,7 @@
             localStorage.getItem("sortPointsdataStore")
         );
         const keys = Object.keys(reihenfolge);
+        done.push(currentBereich)
         for (let i = 0; i < keys.length; i++) {
             if (!done.includes(keys[i])) {
                 currentFach = questions["bereiche"][keys[i]]["faecher"][0];
@@ -57,7 +64,10 @@
         if (!currentFach) {
             currentBereich = getNextBereich();
             if (!currentBereich) {
-                goto("/tables");
+                console.log("done" + JSON.stringify(points));
+                localStorage.setItem("sortPointsdataStore", undefined);
+                //localStorage.setItem("UmfrageDataStore", JSON.stringify(sortPoints()));
+                //goto("/tables");
             }
         }
     };
@@ -104,11 +114,14 @@
     };
 
     function BeforeUnload(Event) {
-        Event.preventDefault();
-        Event.returnValue =
-            "Bist du sicher das du die Seite verlassen möchtest?";
+        if(currentBereich) {
+            Event.preventDefault();
+            Event.returnValue =
+                "Bist du sicher das du die Seite verlassen möchtest?";
 
-        return "Bist du sicher das du die Seite verlassen möchtest?";
+            return "Bist du sicher das du die Seite verlassen möchtest?";
+        }
+
     }
 </script>
 
