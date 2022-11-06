@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 var exec = require('child_process').exec;
 var cors = require('cors')
+const fs = require('fs')
 
 app.use(cors({
     origin: '*'
@@ -15,16 +16,13 @@ app.use(express.json());
 const PORT = 3000;
 app.post('/convert/json', (req, res) => {
     let { name } = req.body;
-    req.files.file.mv('uploaded_files/' + name + '.lpo', function (err) {
-        if (err)
-            return res.status(500).send(err);
-    }
+    req.files.file.mv('uploaded_files/' + name + '.lpo'
     );
 
     // FILE SAVED AS 'uploaded_files/NAME.lpo'
 
     const output = exec('./decoder.sh /uploaded_files/' + name + ' converted/', { encoding: 'utf-8' });  // the default is 'buffer'
-    let data = {} //PUT THE JSON DATA IN HERE
+    let data = JSON.parse(fs.readFile("converted/file.json")) //PUT THE JSON DATA IN HERE
     res.send(data);
 });
 

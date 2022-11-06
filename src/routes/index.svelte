@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { createPopup } from '../components/PopupManager.svelte';
 	// If you are using CommonJS modules:
-	import Dropzone from 'Dropzone';
+	import Dropzone from 'dropzone';
 
 	let uploadOption = {
 		uploadMultiple:false,
