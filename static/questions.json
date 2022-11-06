@@ -11,16 +11,20 @@
       "questions": [
         {
           "question": "Analysierst du gerne Texte?",
-          "answer": [false, "Ja.", "Nein."]
+          "multiple": false,
+          "points": [2, 1, -1, -2],
+          "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Liest du gerne?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Schreibst du gerne?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         }
       ]
@@ -30,16 +34,19 @@
         {
           "question": "Kannst du gut Vokabeln lernen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Bist du an der englischen Sprache interessiert?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie ist deine Aussprache im Englischen?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Native Speaker",
             "Ich komm damit klar",
@@ -50,6 +57,7 @@
         {
           "question": "Wie ist dein Wortschatz im Englischen?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Native Speaker",
             "Mein Urlaub ist gebucht!",
@@ -64,11 +72,13 @@
         {
           "question": "Bist du an der französischen Sprache interessiert?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie ist deine Aussprache im Französisch?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in der Aussprache",
             "Ich komm damit klar",
@@ -79,6 +89,7 @@
         {
           "question": "Wie gut sind deine Französischkenntnisse?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Très bien",
             "Bof",
@@ -93,11 +104,13 @@
         {
           "question": "Bist du an der französischen Sprache interessiert?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie ist deine Aussprache im Französisch?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in der Aussprache",
             "Ich komm damit klar",
@@ -108,6 +121,7 @@
         {
           "question": "Wie gut sind deine Französischkenntnisse?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Très bien",
             "Bof",
@@ -122,11 +136,13 @@
         {
           "question": "Bist du an der französischen Sprache interessiert?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie ist deine Aussprache im Französisch?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in der Aussprache",
             "Ich komm damit klar",
@@ -137,6 +153,7 @@
         {
           "question": "Wie gut sind deine Französischkenntnisse?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Très bien",
             "Bof",
@@ -151,11 +168,13 @@
         {
           "question": "Bist du an der französischen Sprache interessiert?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie ist deine Aussprache im Französisch?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in der Aussprache",
             "Ich komm damit klar",
@@ -166,6 +185,7 @@
         {
           "question": "Wie gut sind deine Französischkenntnisse?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Très bien",
             "Bof",
@@ -180,11 +200,13 @@
         {
           "question": "Magst du Zahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie ist dein mathematisches Grundverständnis?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Mathe",
             "Ich komm damit klar",
@@ -195,6 +217,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was Formeln, Graphen und Rechnungen angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -209,11 +232,13 @@
         {
           "question": "Magst du Kommazahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie sind deine Kentnisse in Physik?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Physik",
             "Ich komm damit klar",
@@ -224,6 +249,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -236,23 +262,26 @@
     "chemie": {
       "questions": [
         {
-          "question": "Magst du Kommazahlen?",
+          "question": "Magst du Atome?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
-          "question": "Wie sind deine Kentnisse in Physik?",
+          "question": "Wie sind deine Kentnisse in Chemie?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
-            "Ich bin sehr talentiert in Physik",
+            "Ich bin sehr talentiert in Chemie",
             "Ich komm damit klar",
-            "Physik liegt mir eher weniger",
+            "Chemie liegt mir eher weniger",
             "Ich komm damit gar nicht klar"
           ]
         },
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -267,11 +296,13 @@
         {
           "question": "Magst du Kommazahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie sind deine Kentnisse in Physik?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Physik",
             "Ich komm damit klar",
@@ -282,6 +313,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -296,11 +328,13 @@
         {
           "question": "Magst du Kommazahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie sind deine Kentnisse in Physik?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Physik",
             "Ich komm damit klar",
@@ -311,6 +345,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -325,11 +360,13 @@
         {
           "question": "Magst du Kommazahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie sind deine Kentnisse in Physik?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Physik",
             "Ich komm damit klar",
@@ -340,6 +377,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -354,11 +392,13 @@
         {
           "question": "Magst du Kommazahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie sind deine Kentnisse in Physik?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Physik",
             "Ich komm damit klar",
@@ -369,6 +409,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -383,11 +424,13 @@
         {
           "question": "Magst du Kommazahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie sind deine Kentnisse in Physik?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Physik",
             "Ich komm damit klar",
@@ -398,6 +441,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -412,11 +456,13 @@
         {
           "question": "Magst du Kommazahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie sind deine Kentnisse in Physik?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Physik",
             "Ich komm damit klar",
@@ -427,6 +473,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -441,11 +488,13 @@
         {
           "question": "Magst du Kommazahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie sind deine Kentnisse in Physik?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Physik",
             "Ich komm damit klar",
@@ -456,6 +505,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -470,11 +520,13 @@
         {
           "question": "Magst du Kommazahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie sind deine Kentnisse in Physik?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Physik",
             "Ich komm damit klar",
@@ -485,6 +537,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -499,11 +552,13 @@
         {
           "question": "Magst du Kommazahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie sind deine Kentnisse in Physik?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Physik",
             "Ich komm damit klar",
@@ -514,6 +569,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
@@ -528,11 +584,13 @@
         {
           "question": "Magst du Kommazahlen?",
           "multiple": false,
+          "points": [2, 1, -1, -2],
           "answer": ["Ja.", "Nein."]
         },
         {
           "question": "Wie sind deine Kentnisse in Physik?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich bin sehr talentiert in Physik",
             "Ich komm damit klar",
@@ -543,6 +601,7 @@
         {
           "question": "Hast du ein erweitertes Wissen was die Welt und ihre Funktionsweise angeht?",
           "multiple": true,
+          "points": [2, 1, -1, -2],
           "answer": [
             "Ich kenne mich mit allem sehr gut aus!",
             "Ich habe alles was ich brauche und ein bisschen mehr",
