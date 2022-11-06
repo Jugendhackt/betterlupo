@@ -1,4 +1,5 @@
 <script>
+    import {goto} from '@sapper/app';
 
 </script>
 
@@ -48,12 +49,14 @@
 
 </style>
 <!-- Path: select.svelte -->
-<div class="container">
-    <div class="select">
+ <!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="container" >
+    <div class="select" on:click={goto("/questions")}>
         <h1>Fragenbogen ausfüllen</h1>
         <img class="arrow" src="icons/arrow_forward.svg" alt="arrow right" draggable="false">
     </div>
-    <div class="select">
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="select" on:click={goto("/table")}>
         <h1>Manuell bearbeiten</h1>
         <img class="arrow" src="icons/arrow_forward.svg" alt="arrow right" draggable="false">
     </div>
