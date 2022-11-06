@@ -21,16 +21,18 @@ app.post('/convert/json', async (req, res) => {
 
     // FILE SAVED AS 'uploaded_files/NAME.lpo'
 
-    const output = await exec('./decoder.sh /uploaded_files/' + name + ' converted/', { encoding: 'utf-8' });  // the default is 'buffer'
-    let data = JSON.parse(await fs.readFileSync('./converted/file.json','utf8', (err, data) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-        console.log(data);
-      }));
-    console.log(data)
-    res.status(200).send(data);
+    const output = await exec('./decoder.sh ./uploaded_files/' + name + '.lpo ./converted/', { encoding: 'utf-8' });  // the default is 'buffer'
+    setTimeout(async () => {
+        let data = JSON.parse(await fs.readFileSync('./converted/file.json','utf8', (err, data) => {
+            if (err) {
+            console.error(err);
+            return;
+            }
+            console.log(data);
+        }));
+        console.log(data)
+        res.status(200).send(data);
+    }, 500)
 });
 
 app.post('/convert/lpo', (req, res) => {
