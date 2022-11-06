@@ -28,8 +28,6 @@
 					let dataobj = await response.json();
 					console.log(dataobj);
 					if(response.status == 200){
-						popup.close();
-						popup = createPopup("Erfolg!", "Deine Datei wurde erfolgreich hochgeladen!");
 						localStorage.setItem("lupo", JSON.stringify(dataobj));
 						goto("/select")
 					}else{

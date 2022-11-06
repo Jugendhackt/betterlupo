@@ -14,6 +14,19 @@
         return options.filter(option => option.selected);
     }
 
+    export function setAbiLevel(name, level){
+        ooptions = options.map(option => {
+            if(option.name == name){
+                option.abi = level;
+            }
+            return option;
+        });
+        dispatch('refresh', {
+            options: options,
+            origin: title
+        });
+    }
+
     export function getSelectedHours(){
         let hours = 0;
         options.forEach(option => {

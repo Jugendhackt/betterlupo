@@ -22,12 +22,11 @@
             }
             //-------------
             
-            const schuelerfaecher = lupo["ABP_SchuelerFaecher"]
-            const faecherkuerzel = schuelerfaecher.map((fach) => fach["FachKrz"]);
-            faecherkuerzel.forEach(element => {
-                Leistungskurse.addOption(kuerzel, 5, true, true, false)
-                grundkurse_schriftlich.addOption(kuerzel, 5, true, true, false)
-                grundkurse_mündlich.addOption(kuerzel, 5, true, true, false)
+            const schuelerfaecher = lupo["ABP_Faecher"]
+            schuelerfaecher.forEach(element => {
+                Leistungskurse.addOption(element["Bezeichnung"], 5, true, true, false)
+                grundkurse_schriftlich.addOption(element["Bezeichnung"], 3, true, true, false)
+                grundkurse_mündlich.addOption(element["Bezeichnung"], 3, true, true, false)
             });
         }, 100);
     });
@@ -50,6 +49,7 @@
      * object.unselectedOptions(name) - Fach abwählen
      * object.getSelected() - Array mit ausgewählten Fächern
      * object.getUnselected() - Array mit nicht ausgewählten Fächern
+     * object.setAbiLevel(name, level)
      */
     
 
