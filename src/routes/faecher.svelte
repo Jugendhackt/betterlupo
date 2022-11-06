@@ -14,11 +14,12 @@
     }
 
     onMount(() => {
-        const reihenfolge = JSON.parse(
-            localStorage.getItem("sortPointsdataStore")
-        );
+
         
-        if(reihenfolge) {
+        if(localStorage.getItem("sortPointsdataStore") !== "undefined") {
+            const reihenfolge = JSON.parse(
+                localStorage.getItem("sortPointsdataStore")
+            );
             currentBereich = Object.keys(reihenfolge)[0];
             currentFach = questions["bereiche"][currentBereich]["faecher"][0];
         } else {
@@ -65,7 +66,8 @@
             currentBereich = getNextBereich();
             if (!currentBereich) {
                 console.log("done" + JSON.stringify(points));
-                localStorage.setItem("sortPointsdataStore", undefined);
+                localStorage.setItem("testDataStore", JSON.stringify(points));
+                //localStorage.setItem("sortPointsdataStore", undefined);
                 //localStorage.setItem("UmfrageDataStore", JSON.stringify(sortPoints()));
                 //goto("/tables");
             }
@@ -79,11 +81,11 @@
         // addtributes are for Point
         if (currentAnswer !== "") {
             currentQuestion++;
-            currentAnswer = "";
             points[currentFach] +=
                 questionsUnterrichtsfachPunkte[
                     questionsUnterrichtsfach.answer.indexOf(currentAnswer)
                 ];
+            currentAnswer = "";
         } else {
             alert("Bitte wähle mindestens eine Antwort aus!");
         }
@@ -97,18 +99,15 @@
         const questionsUnterrichtsfach = questionsFachBereich[currentQuestion];
         const questionsUnterrichtsfachPunkte =
             questionsUnterrichtsfach["points"];
-        console.log(currentFach + " " + currentBereich);
         if (nochInDerSelbenKategorie) {
             handleSelbeFach(
                 questionsUnterrichtsfachPunkte,
-                questionsUnterrichtsfach,
-                "fach"
+                questionsUnterrichtsfach
             );
         } else {
             handleNaechstesFach(
                 questionsUnterrichtsfachPunkte,
-                questionsUnterrichtsfach,
-                "fach"
+                questionsUnterrichtsfach
             );
         }
     };
