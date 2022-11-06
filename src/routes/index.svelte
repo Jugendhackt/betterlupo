@@ -20,14 +20,14 @@
 			formData.append("name", "Max_Mustermann");
 			let res;
 			try {
-				res = await fetch("http://" + window.location.hostname + ":3000/convert/json", {
+				await fetch("http://" + window.location.hostname + ":3000/convert/json", {
 					method: "POST",
 					body: formData
 				}).then((response) => {
 					if(response.status == 200){
 						popup.close();
 						popup = createPopup("Erfolg!", "Deine Datei wurde erfolgreich hochgeladen!");
-						localStorage.setItem("lupo", JSON.stringify(res));
+						localStorage.setItem("lupo", JSON.stringify(response.json()));
 					}else{
 						popup.close();
 						createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden!");
