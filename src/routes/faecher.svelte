@@ -1,73 +1,197 @@
 <script>
-
-    import {goto} from '@sapper/app';
-    import { onMount } from 'svelte';
-    import questions from '../../static/questions.json';
-    let currentAnswer = '';
+    import { goto } from "@sapper/app";
+    import { onMount } from "svelte";
+    import questions from "../../static/questions.json";
+    let currentAnswer = "";
     let currentQuestion = 0;
     let done = [];
-    let currentFach = '';
+    let currentFach = "";
+    let currentBereich = "";
     let points = {};
-    
-    for (let fach in questions['faecher']) {
+
+    for (let fach in questions["faecher"]) {
         points[fach] = 0;
     }
 
-    onMount( () => {
-        const reihenfolge = JSON.parse(localStorage.getItem('reihenfolge'));
-        currentFach = reihenfolge[0][0];
+    onMount(() => {
+        const reihenfolge = JSON.parse(
+            localStorage.getItem("sortPointsdataStore")
+        );
+        console.log(JSON.stringify(reihenfolge));
+        currentBereich = Object.keys(reihenfolge)[0];
+        currentFach = questions["bereiche"][currentBereich]["faecher"][0];
+        console.log(currentFach);
     });
 
-    const getNextFach = () => {
-        const reihenfolge = JSON.parse(localStorage.getItem('reihenfolge'));
-        for (let i = 0; i < reihenfolge.length; i++) {
-            if (!done.includes(reihenfolge[i])) {
-                return reihenfolge[i];
+    const getNextBereich = () => {
+        const reihenfolge = JSON.parse(
+            localStorage.getItem("sortPointsdataStore")
+        );
+        const keys = Object.keys(reihenfolge);
+        for (let i = 0; i < keys.length; i++) {
+            if (!done.includes(keys[i])) {
+                currentFach = questions["bereiche"][keys[i]]["faecher"][0];
+                return keys[i];
             }
         }
         return undefined;
     };
-    
-    const handleNextFach = () => {
+
+    const getNextFach = () => {
+
         done.push(currentFach);
-        currentFach = getNextFach();
+
+        for (let i = 0; i < questions["bereiche"][currentBereich]["faecher"].length; i++) {
+            if (!done.includes(questions["bereiche"][currentBereich]["faecher"][i])) {
+                return questions["bereiche"][currentBereich]["faecher"][i];
+            }
+        }
+        return undefined;
+    }
+
+    const handleNaechstesFach = () => {
+        done.push(currentFach);
         currentQuestion = 0;
-        currentAnswer = '';
-        if(!currentFach) {
-            localStorage.setItem('tableData', JSON.stringify(points));
-            goto('/tables');
+        currentFach = getNextFach();
+        currentAnswer = "";
+        if (!currentFach) {
+            currentBereich = getNextBereich();
+            if (!currentBereich) {
+                goto("/tables");
+            }
         }
     };
 
-    const handleSelbeFach = (questionsUnterrichtsfachPunkte, questionsUnterrichtsfach) => {
-        if (currentAnswer !== '') {
+    const handleSelbeFach = (
+        questionsUnterrichtsfachPunkte,
+        questionsUnterrichtsfach
+    ) => {
+        // addtributes are for Point
+        if (currentAnswer !== "") {
             currentQuestion++;
-            currentAnswer = '';
+            currentAnswer = "";
+            points[currentFach] +=
+                questionsUnterrichtsfachPunkte[
+                    questionsUnterrichtsfach.answer.indexOf(currentAnswer)
+                ];
         } else {
-            alert('Bitte wähle mindestens eine Antwort aus!');
+            alert("Bitte wähle mindestens eine Antwort aus!");
         }
     };
-
-    
 
     const nextQuestion = () => {
-        const questionsFachBereich = questions['faecher'][currentFach]['questions'];
-        const nochInDerSelbenKategorie = currentQuestion < questionsFachBereich.length - 1;
+        const questionsFachBereich =
+            questions["faecher"][currentFach]["questions"];
+        const nochInDerSelbenKategorie =
+            currentQuestion < questionsFachBereich.length - 1;
         const questionsUnterrichtsfach = questionsFachBereich[currentQuestion];
-        const questionsUnterrichtsfachPunkte = questionsUnterrichtsfach['points'];
-        if(nochInDerSelbenKategorie) {
-            handleSelbeFach(questionsUnterrichtsfachPunkte, questionsUnterrichtsfach, "fach");
+        const questionsUnterrichtsfachPunkte =
+            questionsUnterrichtsfach["points"];
+        console.log(currentFach + " " + currentBereich);
+        if (nochInDerSelbenKategorie) {
+            handleSelbeFach(
+                questionsUnterrichtsfachPunkte,
+                questionsUnterrichtsfach,
+                "fach"
+            );
         } else {
-            handleNaechstesFach(questionsUnterrichtsfachPunkte, questionsUnterrichtsfach, "fach");
+            handleNaechstesFach(
+                questionsUnterrichtsfachPunkte,
+                questionsUnterrichtsfach,
+                "fach"
+            );
         }
-        // if (currentAnswer !== '') {
-        //     currentQuestion++;
-        //     currentAnswer = '';
-        // } else {
-        //     alert('Bitte wähle mindestens eine Antwort aus!');
-        // }
     };
+
+    function BeforeUnload(Event) {
+        Event.preventDefault();
+        Event.returnValue =
+            "Bist du sicher das du die Seite verlassen möchtest?";
+
+        return "Bist du sicher das du die Seite verlassen möchtest?";
+    }
 </script>
+
+<svelte:window on:beforeunload={BeforeUnload} />
+
+<div class="container">
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore missing-declaration -->
+    <img
+        on:click={() => backQuestion()}
+        class="arrow left"
+        src="icons/arrow_forward.svg"
+        alt="icon für questions"
+        draggable="false"
+    />
+
+    <div class="Question">
+        <div class="col-12">
+            {#if currentFach}
+                <h1>
+                    {questions["faecher"][currentFach]["questions"][
+                        currentQuestion
+                    ]["question"]}
+                </h1>
+            {:else}
+                <h1>
+                    Es konnte keine neue Frage generiert werden -> Leite weiter
+                </h1>
+            {/if}
+        </div>
+        <div class="answers">
+            <form>
+                <ul>
+                    {#if currentFach}
+                        {#each questions["faecher"][currentFach]["questions"][currentQuestion]["answer"] as answer}
+                            {#if questions["faecher"][currentFach]["questions"][currentQuestion]["multiple"]}
+                                <li>
+                                    <input
+                                        type="radio"
+                                        name="answer"
+                                        bind:group={currentAnswer}
+                                        value={answer}
+                                        draggable="false"
+                                    />
+                                    <label for="answer">{answer}</label>
+                                </li>
+                            {:else}
+                                <li>
+                                    <input
+                                        type="radio"
+                                        name="answer"
+                                        bind:group={currentAnswer}
+                                        value={answer}
+                                        draggable="false"
+                                    />
+                                    <label for="answer">{answer}</label>
+                                </li>
+                            {/if}
+                        {/each}
+                    {:else}
+                        <h1>
+                            Es konnte keine neue Frage generiert werden -> Leite
+                            weiter
+                        </h1>
+                    {/if}
+                </ul>
+            </form>
+            {#if currentAnswer}
+                <p>Deine Antwort: {currentAnswer}</p>
+            {:else}
+                <p>Du musst min. 1 Antwort ausgewählt haben!</p>
+            {/if}
+        </div>
+    </div>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <img
+        on:click={() => nextQuestion()}
+        class="arrow right"
+        src="icons/arrow_forward.svg"
+        alt="icon für questions"
+        draggable="false"
+    />
+</div>
 
 <style>
     .container {
@@ -122,56 +246,4 @@
         height: 1em;
         border-radius: 50%;
     }
-
-
 </style>
-
-
-<div class="container">
-
-  <img on:click={() => backQuestion()} class="arrow left" src="icons/arrow_forward.svg" alt="icon für questions" draggable="false">
-
-  <div class="Question">
-    <div class="col-12">
-
-        {#if currentFach}
-            <h1>{questions["faecher"][currentFach]["questions"][currentQuestion]["question"]}</h1>
-        {:else}
-            <h1>Es konnte keine neue Frage generiert werden -> Leite weiter</h1>
-        {/if}
-
-
-      
-    </div>
-    <div class="answers">
-      <form>
-        <ul>
-        {#if currentFach}
-            {#each questions["faecher"][currentFach]["questions"][currentQuestion]["answer"] as answer}
-                {#if questions["faecher"][currentFach]["questions"][currentQuestion]["multiple"]}
-                    <li>
-                    <input type="checkbox" name="answer" bind:group={currentAnswer} value={answer} draggable="false">
-                    <label for="answer">{answer}</label>
-                    </li>
-                {:else}
-                    <li>
-                    <input type="radio" name="answer" bind:group={currentAnswer} value={answer} draggable="false">
-                    <label for="answer">{answer}</label>
-                    </li>
-                {/if}
-            {/each}
-        {:else}
-          <h1>Es konnte keine neue Frage generiert werden -> Leite weiter</h1>
-        {/if}
-        </ul>
-      </form>
-      {#if currentAnswer}
-        <p>Deine Antwort: {currentAnswer}</p>
-      {:else}
-        <p>Du musst min. 1 Antwort ausgewählt haben!</p>
-      {/if}
-    </div>
-  </div>
-  <img on:click={() => nextQuestion()} class="arrow right" src="icons/arrow_forward.svg" alt="icon für questions" draggable="false">
-
-</div>
