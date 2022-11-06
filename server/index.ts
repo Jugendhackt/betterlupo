@@ -1,14 +1,21 @@
 const express = require('express');
 const app = express();
 var exec = require('child_process').exec;
+var cors = require('cors')
+
+app.use(cors({
+    origin: '*'
+}))
 
 const fileUpload = require('express-fileupload')
 app.use(fileUpload())
 
+app.use(express.json());
+
 const PORT = 3000;
 app.post('/convert/json', (req, res) => {
     let { name } = req.body;
-    req.files[0].mv('uploaded_files/' + name + '.lpo', function (err) {
+    req.files.file.mv('uploaded_files/' + name + '.lpo', function (err) {
         if (err)
             return res.status(500).send(err);
     }
@@ -16,7 +23,7 @@ app.post('/convert/json', (req, res) => {
 
     // FILE SAVED AS 'uploaded_files/NAME.lpo'
 
-    const output = exec('./decoder.sh ' + name + ' converted', { encoding: 'utf-8' });  // the default is 'buffer'
+    const output = exec('./decoder.sh /uploaded_files/' + name + ' converted/', { encoding: 'utf-8' });  // the default is 'buffer'
     let data = {} //PUT THE JSON DATA IN HERE
     res.send(data);
 });

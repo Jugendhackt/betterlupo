@@ -1,7 +1,46 @@
 <script>
-	import successkid from 'images/successkid.jpg';
+	import { goto } from '@sapper/app';
 	import { onMount } from 'svelte';
 	import { createPopup } from '../components/PopupManager.svelte';
+	// If you are using CommonJS modules:
+	import Dropzone from 'Dropzone';
+
+	let uploadOption = {
+		uploadMultiple:false,
+		maxFiles: 1
+	}
+
+	//TODO: File types .lpo!!!!
+	onMount(() => {
+		let upload = new Dropzone("div#upload-lupo", { url: "/"}, uploadOption);
+		upload.on("addedfile", async (upfile) => {
+  			var popup = createPopup("Bitte warten...", "Deine Datei wird hochgeladen...");
+			let formData = new FormData();
+			formData.append("file", upfile);
+			formData.append("name", "Max_Mustermann");
+			try {
+				await fetch("http://" + window.location.hostname + ":3000/convert/json", {
+					method: "POST",
+					body: formData
+				}).then((response) => {
+					if(response.status == 200){
+						popup.close();
+						popup = createPopup("Erfolg!", "Deine Datei wurde erfolgreich hochgeladen!");
+					}else{
+						popup.close();
+						createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden!");
+					}
+			})
+			} catch (error) {
+				popup.close();
+				createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden! <br>" + error);
+			}
+			upload.removeAllFiles(true);
+			goto("/select")
+			popup.close();
+		});
+	})
+	
 </script>
 
 <style>
@@ -32,7 +71,8 @@
 </svelte:head>
 
 <main>
-	<div style="display:flex; align-items:center; justify-content:center;">
+	
+	<div id="upload-lupo" style="display:flex; align-items:center; justify-content:center;">
 	<img src="icons/upload.svg" alt="upload">
 	</div>
 	<p>LuPo Datei hochladen</p>
