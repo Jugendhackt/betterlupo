@@ -6,7 +6,7 @@ export let attributes = {};
 
 let animated = false;
 
-function close(){
+export function close(){
     closePopup(attributes.id);
     animated = false;
 }
