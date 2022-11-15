@@ -21,7 +21,7 @@ app.post('/convert/json', async (req, res) => {
 
     // FILE SAVED AS 'uploaded_files/NAME.lpo'
 
-    const output = await exec('./decoder.sh ./uploaded_files/' + name + '.lpo ./converted/', { encoding: 'utf-8' });  // the default is 'buffer'
+    var output = await exec('./decoder.sh ./uploaded_files/' + name + '.lpo ./converted/', { encoding: 'utf-8' });  // the default is 'buffer'
     let timeout_counter = 0;
     // wait for file to be created
     while(fs.existsSync('./converted/file.json') == false) {
@@ -30,7 +30,7 @@ app.post('/convert/json', async (req, res) => {
             return;
         }
         timeout_counter++;
-        await new Promise(r => setTimeout(r, 100));
+        await new Promise(r => setTimeout(r, 50));
     }
     let data = JSON.parse(await fs.readFileSync('./converted/file.json','utf8', (err, data) => {
         if (err) {
@@ -41,7 +41,6 @@ app.post('/convert/json', async (req, res) => {
     }));
     console.log(data)
     res.status(200).send(data);
-
 });
 
 app.post('/convert/lpo', (req, res) => {

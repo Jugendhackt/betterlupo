@@ -35,15 +35,15 @@
 							goto("/select")
 						}else{
 							console.log("An Error occured!")
-							createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden!");
+							createPopup("Fehler!", "Deine Datei konnte nicht verarbeitet werden!");
 						}
 					}catch(e){
 						console.log(e);
-						createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden!");
+						createPopup("❌ Fehler!", "Deine Datei konnte nicht verarbeitet werden!");
 					}
 			})
 			} catch (error) {
-				createPopup("Fehler!", "Deine Datei konnte nicht hochgeladen werden! <br>" + error);
+				createPopup("❌ Fehler!", "Die Serververbindung ist fehlgeschlagen! <br>" + error);
 			}
 			upload.removeAllFiles(true);
 			popup.close();
