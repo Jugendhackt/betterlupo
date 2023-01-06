@@ -8,4 +8,4 @@ Es wird verwendet, um die Kurswahlen der Schüler an die Schule weiterzugeben.
 
 <h2>Was ist das Problem?</h2>
 LuPO ist altmodisch und nicht intuitiv. Diese Meinung teilen viele Schüler.
-Wir möchten einen intuitiven weg erschaffen, LuPO Datein auszufüllen.
+Wir möchten einen intuitiven Weg erschaffen, LuPO Datein auszufüllen.
