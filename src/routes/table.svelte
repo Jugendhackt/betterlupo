@@ -1,41 +1,74 @@
 <script>
     import { onMount } from 'svelte';
+    import { goto } from '@sapper/app'
+    import { createPopup } from '../components/PopupManager.svelte';
+    import StatBox from '../components/StatBox.svelte';
     import TableSelection from '../components/TableSelection.svelte';
     let Leistungskurse;
     let grundkurse_schriftlich;
     let grundkurse_mündlich;
+    let global_options = {};
+    let global_hours = 0;
+
+    let total_selected;
+
+    let lupo = {};
 
     onMount(async () => {
         setTimeout(() => {
-            Leistungskurse.addOption("Deutsch");
-            Leistungskurse.addOption("Englisch");
-            Leistungskurse.addOption("Mathe");
+            lupo = JSON.parse(localStorage.getItem("lupo"))
+            if(!lupo){
+                goto('/');
+            }
+            //-------------
+            
+            const schuelerfaecher = lupo["ABP_Faecher"]
+            schuelerfaecher.forEach(element => {
+                Leistungskurse.addOption(element["Bezeichnung"], 5, true, true, false)
+                grundkurse_schriftlich.addOption(element["Bezeichnung"], 3, true, true, false)
+                grundkurse_mündlich.addOption(element["Bezeichnung"], 3, true, true, false)
+            });
         }, 100);
     });
 
+    function refresh(event){
+        console.log("refresh");
+        global_options[event.detail.origin] = event.detail.options;
+        console.log(global_options);
+        total_selected = Leistungskurse.getSelected().length + grundkurse_schriftlich.getSelected().length + grundkurse_mündlich.getSelected().length;
+        global_hours = Leistungskurse.getSelectedHours() + grundkurse_schriftlich.getSelectedHours() + grundkurse_mündlich.getSelectedHours();
+    
+        //-------------------
+
+    }
+
     /**
-     * object.addOption(name) - Fach hinzufügen
+     * object.addOption(name, hours, canedit = true, abi = false, language = false) - Fach hinzufügen
      * object.removeOption(name) - Fach entfernen
      * object.selectOption(name) - Fach auswählen
      * object.unselectedOptions(name) - Fach abwählen
      * object.getSelected() - Array mit ausgewählten Fächern
      * object.getUnselected() - Array mit nicht ausgewählten Fächern
+     * object.setAbiLevel(name, level)
      */
     
 
 
 </script>
 
+<div style="display: flex; flex-direction: row; justify-content: space-around; column-gap:12px;">
+    <StatBox description="Stunden / Woche" value={global_hours + " / 40"} icon="icons/time.svg" />
+    <StatBox description="Fächern" value={total_selected + " / 10"} icon="icons/school.svg" />
+    <StatBox description="Datei herunterladen" value="Fertig" icon="icons/done.svg" style="secondary" onclick={() => {console.log("AAA")}} hoverable={true}/>
+    </div>
 
+<TableSelection on:refresh={refresh} bind:this={Leistungskurse} title="Leistungskurse"/>
 
-<TableSelection bind:this={Leistungskurse} title="Leistungskurse"/>
+<TableSelection on:refresh={refresh} bind:this={grundkurse_schriftlich}  title="Schriftliche Kurse"/>
 
-<TableSelection bind:this={grundkurse_schriftlich}  title="Schriftliche Kurse"/>
-
-<TableSelection bind:this={grundkurse_mündlich}  title="Mündliche Kurse"/>
+<TableSelection on:refresh={refresh} bind:this={grundkurse_mündlich}  title="Mündliche Kurse"/>
 
 <p></p>
-
 
 
 <style>
